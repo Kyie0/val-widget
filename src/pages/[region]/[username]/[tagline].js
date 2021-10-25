@@ -51,10 +51,7 @@ export default function UserInfo() {
                         <h1>{data?.currenttierpatched}</h1>
                     </div>
                 </div>
-                <div>
-                    
-                </div>
-                < div id="recentGamesWrapper" className="row-span-3 col-span-1 m-2 pt-2 divide-y-2 divide-white divide-opacity-25" >
+                <div id="recentGamesWrapper" className="row-span-3 col-span-1 m-2 pt-2 divide-y-2 divide-white divide-opacity-25" >
                     <div className=" text-center text-gray-200 font-medium font-Roboto text-lg text-opacity-90">
                         Recent Games
                     </div>
