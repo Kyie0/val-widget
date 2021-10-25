@@ -16,13 +16,13 @@ export default function Input(){
 
     return(
         <>
-        <div id="inputWrapper" className="bg-indigo-50 max-w-sm mx-auto rounded-xl shadow-lg w-84">
-        <div id="inputTitle" className="flex justify-center items-center py-2 px-4 p-4">
+        <div id="inputWrapper" className="bg-indigo-50 max-w-sm mx-auto rounded-xl shadow-lg w-auto">
+        <div id="inputTitle" className="flex justify-center items-center py-2 p-4">
           <h1 className="font-bold text-gray-800 text-3xl">
             Enter Username
           </h1>
         </div>
-        <div id="inputBoxWrapper" className="flex justify-center items-center py-2 px-4 p-4">
+        <div id="inputBoxWrapper" className="flex justify-center items-center py-2 p-4">
         <select id="dropdown"className ="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight">
             <option value="na">NA</option>
             <option value="eu">EU</option>
