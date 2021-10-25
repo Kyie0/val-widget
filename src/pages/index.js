@@ -1,11 +1,16 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Logo from '../components/logo'
+import Preview from '../components/preview'
+import Input from '../components/input'
+import Footer from '../components/footer'
 
 
 export default function Home() {
   return (
-    <div>
-
+    <div className="app">
+      <Logo />
+      <Preview />
+      <Input />
+      <Footer/>
     </div>
   )
 }
