@@ -8,7 +8,7 @@ export default function UserInfo() {
   
     const { data, revalidate } = useSWR(
         () => `/api/current-rank?region=${region}&username=${username}&tagline=${tagline}`,
-        url => axios.get(url).then(res => res.data),
+        url => axios.get(url).then(res => res.data).catch(console.error),
         {
             initialData:{
                 currenttier: 0,
