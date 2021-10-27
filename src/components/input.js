@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
+import { useClientRouter } from "use-client-router";
 
 export default function Input(){
     
-    const Router = useRouter();
+    const Router = useClientRouter();
     
     let click = () =>{
       let data = document.querySelector("#username").value.split("#")
@@ -10,7 +11,7 @@ export default function Input(){
       let tag = data[1]
       let region = document.querySelector("#dropdown").value
       Router.push({
-        pathname: `[region]/[username]/[tag]`,
+        pathname: `widget/[region]/[username]/[tag]`,
         query: { region: region, username: username, tag: tag },
       })}
 

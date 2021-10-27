@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { useRouter } from 'next/router'
+import { useClientRouter } from "use-client-router";
 import useSWR from 'swr'
 
 export default function UserInfo() {
-    const router = useRouter()
+    const router = useClientRouter();
     const { region, username, tagline } = router.query;
-  
-    const { data, revalidate } = useSWR(
-        () => `/api/current-rank?region=${region}&username=${username}&tagline=${tagline}`,
-        url => axios.get(url).then(res => res.data).catch(console.error),
+
+    const { data } = useSWR(
+        `/api/current-rank?region=${region}&username=${username}&tagline=${tagline}`,
+        url => axios.get(url).then(res => res.data),
         {
             initialData:{
                 currenttier: 0,
@@ -27,16 +27,14 @@ export default function UserInfo() {
 			refreshWhenHidden: true,
 			shouldRetryOnError: false,
             
-            onError: error => {
-				if (error.response.status !== 401) 
-                
-                throw error
-
-				revalidate()
-			},
+            onError:() => {
+                router.push("/404")
+            }
         }
     )
+    
     return (
+    
     <div className="app">
         <div id="widget-wrapper" className="flex h-screen justify-center items-center">
             <div id="widget" className="grid grid-rows-3 grid-flow-col bg-widget rounded-3xl w-auto h-auto shadow-lg bg-opacity-60">
