@@ -1,19 +1,29 @@
-import { useRouter } from 'next/router'
 import { useClientRouter } from "use-client-router";
+import toast from 'react-hot-toast';
 
 export default function Input(){
-    
     const Router = useClientRouter();
-    
+    const notify = () => toast.error('Username Format Error')
+
     let click = () =>{
+      let inputCheck = document.querySelector("#username").value;
+      let inputRegex = /[A-z\d]+#[A-z\d]{1,5}/g
+      if(inputRegex.test(inputCheck)){
       let data = document.querySelector("#username").value.split("#")
       let username = data[0]
       let tag = data[1]
       let region = document.querySelector("#dropdown").value
       Router.push({
         pathname: `widget/[region]/[username]/[tag]`,
-        query: { region: region, username: username, tag: tag },
-      })}
+        query: { region,username,tag },
+      })
+      }
+      else{
+        notify();
+      }
+    }
+      
+    
 
     return(
         <>
