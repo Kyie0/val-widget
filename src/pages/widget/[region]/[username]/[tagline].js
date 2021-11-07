@@ -37,9 +37,7 @@ export default function UserInfo() {
 			},
         } 
     )
-    
     return (
-    
     <div className="app">
         <div id="widget-wrapper" className="flex h-screen justify-center items-center">
             <div id="widget" className="grid grid-rows-3 grid-flow-col bg-widget rounded-3xl w-auto h-auto shadow-lg bg-opacity-80">
