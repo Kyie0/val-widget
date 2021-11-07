@@ -7,7 +7,7 @@ export default function Input(){
 
     let click = () =>{
       let inputCheck = document.querySelector("#username").value;
-      let inputRegex = /[A-z\d]+#[A-z\d]{1,5}/g
+      let inputRegex = /[A-z\d ]+#[A-z\d]{1,5}/g
       if(inputRegex.test(inputCheck)){
       let data = document.querySelector("#username").value.split("#")
       let username = data[0]
