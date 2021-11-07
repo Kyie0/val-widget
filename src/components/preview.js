@@ -14,7 +14,7 @@ export default function Preview(){
                      Rank
                     </div>
                     <div className="text-center lg:text-3xl font-semibold text-white py-1 font-Roboto" >
-                        <h1>Dimond 2</h1>
+                        <h1>Diamond 2</h1>
                     </div>
                 </div>
                 <div id="recentGamesWrapper" className="row-span-3 col-span-1 m-2 pt-2 divide-y-2 divide-white divide-opacity-25" >
