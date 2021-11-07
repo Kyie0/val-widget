@@ -6,7 +6,7 @@ export default function UserInfo() {
     const router = useClientRouter();
     const { region, username, tagline } = router.query;
 
-    const { data } = useSWR(
+    const { data, revalidate } = useSWR(
         `/api/current-rank?region=${region}&username=${username}&tagline=${tagline}`,
         url => axios.get(url).then(res => res.data),
         {
@@ -27,17 +27,22 @@ export default function UserInfo() {
 			refreshWhenHidden: true,
 			shouldRetryOnError: false,
             
-            onError:() => {
-                router.push("/404")
-            }
-        }
+            onError: async error => {
+				if (error.response.status == 500){
+                    router.push("/404")
+                }
+                else{
+				revalidate()
+                }
+			},
+        } 
     )
     
     return (
     
     <div className="app">
         <div id="widget-wrapper" className="flex h-screen justify-center items-center">
-            <div id="widget" className="grid grid-rows-3 grid-flow-col bg-widget rounded-3xl w-auto h-auto shadow-lg bg-opacity-60">
+            <div id="widget" className="grid grid-rows-3 grid-flow-col bg-widget rounded-3xl w-auto h-auto shadow-lg bg-opacity-80">
                 <div id="imageWrapper" className="row-span-3 flex w-auto h-auto">
                     <img src={data?.rank_image} className="self-center object-contain h-24 py-2 px-1 pl-3 filter drop-shadow-2xl"/>
                 </div>
